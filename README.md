@@ -239,12 +239,17 @@ lib/
 
 4. **Build for production**
    ```bash
-   # Android
-   flutter build apk --release
+   # Android APK
+   flutter build apk --release --no-tree-shake-icons
+
+   # Android App Bundle
+   flutter build appbundle --release --no-tree-shake-icons
 
    # iOS
-   flutter build ios --release
+   flutter build ios --release --no-tree-shake-icons
    ```
+
+   **Note**: The `--no-tree-shake-icons` flag is required because the app uses dynamic icon loading from the database for categories. This is the recommended approach for apps with runtime-determined icons. The APK size impact is minimal (~1-2MB) since MaterialIcons font is already included.
 
 ### Running Tests
 ```bash
